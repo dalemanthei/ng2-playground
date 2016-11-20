@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
+import { SearchboxComponent } from './searchbox/searchbox.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchboxComponent
   ],
   imports: [
     BrowserModule,
