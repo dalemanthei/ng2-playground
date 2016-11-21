@@ -1,3 +1,18 @@
-<p>
-  searchbox works!
-</p>
+<div class="mdl-grid">
+
+  <h3 class="mdl-cell mdl-cell--12-col">{{title}}</h3>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <input type="text" class="mdl-textfield__input" id="giphySearch" [formControl]="searchControl">
+    <label class="mdl-textfield__label" for="giphySearch">Enter giphy search</label>
+  </div>
+
+  <div class="content-grid mdl-grid mdl-cell--12-col">
+      <img *ngFor="let gif of resultSet"
+        src="{{gif.large.url}}"
+        height={{gif.large.height}}
+        width={{gif.large.width}}
+        alt="">
+  </div>
+
+</div>
