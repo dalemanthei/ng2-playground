@@ -16,26 +16,30 @@ export class SearchboxComponent implements OnInit {
   delay: number = 400;
   resultSet: Array<any>;
 
-  constructor(private giphyService: GiphyService) {}
+  // giphys$: Observable<{}> = this.giphyService.giphys$;
+  // giphys$: Observable<Object[]> = this.store.select('giphys');
+
+  constructor(
+    private giphyService: GiphyService
+  ) {}
 
   ngOnInit() {
+
+    // this.giphys$ = this.giphyService.giphys$;
+    // this.giphyService.searchLoad('foo');
 
     let elt = document.querySelector('#giphySearch');
     let keyup$ = Observable.fromEvent(elt, 'keyup');
 
-    let results = keyup$
+    keyup$
       .debounce(() => Observable.interval(this.delay))
       .distinctUntilChanged()
       .map(k => this.giphyService.search(this.searchControl.value)
         .takeUntil(keyup$)
       )
       .concatAll()
+      .subscribe(searchResults => this.resultSet = searchResults)
       ;
 
-      results.forEach(
-        searchResults => this.resultSet = searchResults,
-      );
-
-  }
-
+    }
 }
