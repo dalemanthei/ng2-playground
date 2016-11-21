@@ -4,7 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "ng serve --host 0.0.0.0 --port 4280 --live-reload-port 49180",
+    "start-bad-proxy": "ng serve --proxy-config proxy.config.json ng serve --host 0.0.0.0 --port 4280 --live-reload-port 49180",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
